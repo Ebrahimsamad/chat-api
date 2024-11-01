@@ -9,8 +9,16 @@ import userRoutes from "./routes/user.routes.js";
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
-
+import cors from "cors";
 const PORT = process.env.PORT || 5000;
+
+app.use(
+  cors({
+    origin: "https://chat-samad-front.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 const __dirname = path.resolve();
 
